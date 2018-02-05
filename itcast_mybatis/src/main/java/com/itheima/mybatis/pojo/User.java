@@ -1,13 +1,19 @@
 package com.itheima.mybatis.pojo;
 
+import javax.persistence.*;
 import java.util.Date;
 
+@Table(name = "user")//增加JPA注解 作用是把 User类名和数据库表名进行映射
+//类中的属性名和数据库中的列名映射
 public class User {
         // 主键
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Long id;
         // 用户名
         private String userName;
         // 密码
+    @Column//确保符合驼峰命名规则
         private String password;
         // 姓名
         private String name;
