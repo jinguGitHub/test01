@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
       http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd
-        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
     <!-- 配置接口service扫描  service接口包扫描 -->
     <context:component-scan base-package="com.taotao.manager.service" />
@@ -21,12 +21,12 @@
     <dubbo:registry protocol="zookeeper" address="192.168.37.161:2181"/>
 
     <!-- 用dubbo协议在20880端口暴露服务  #服务器端配置-->
-<!--    <dubbo:protocol name="dubbo" port="20880" />-->
+   <!--<dubbo:protocol name="dubbo" port="20880" />-->
 
     <!-- 声明需要暴露的服务接口  在taotao_manager_interface包下写接口TestService
     实现类TestServiceImpl在taotao_manager_service包中写   ref为实现类名首字母小写testServiceImpl-->
-    <!-- <dubbo:service interface="com.taotao.manager.service.TestService"
-          ref="testServiceImpl" />-->
+    <dubbo:service interface="com.taotao.manager.service.TestService"
+          ref="testServiceImpl"/>
     <dubbo:service interface="com.taotao.manager.service.ItemCatService"
-                   ref="itemCatServiceImpl" id="temCatServiceImpl" timeout="1000000"/>
+    ref="itemCatServiceImpl"  timeout="1000000"/>
 </beans>

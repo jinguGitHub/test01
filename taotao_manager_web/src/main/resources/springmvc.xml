@@ -37,8 +37,8 @@
     <dubbo:registry protocol="zookeeper" address="192.168.37.161:2181"/>
 
     <!--我的理解要调用接口进行服务com.taotao.manager.service.TestService-->
-   <!-- <dubbo:reference interface="com.taotao.manager.service.TestService"
-    id="testService" timeout="1000000"/>--><!--## 先干掉上面使用的广播再配这里的直连url  <!url="dubbo://127.0.0.1:20880/"-->
+   <dubbo:reference interface="com.taotao.manager.service.TestService"
+    id="testService" timeout="1000000"/>
     <dubbo:reference interface="com.taotao.manager.service.ItemCatService"
     id="itemCatServiceImpl" timeout="1000000"/>
 </beans>

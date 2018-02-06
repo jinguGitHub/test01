@@ -32,9 +32,7 @@
             <property name="mappers" value="com.github.abel533.mapper.Mapper" />
         </plugin>
 
-
     </plugins>
-
 
     <!-- 配置环境，制定数据库连接信息 -->
     <environments default="development">
