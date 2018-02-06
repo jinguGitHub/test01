@@ -10,14 +10,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping(value = "/test")
 public class TestController {
 
-    @Autowired
+  /*  @Autowired
     private TestService testService;
 
     @ResponseBody
     @RequestMapping(value = "/date")
     public String queryDate(){
-
         return  this.testService.queryDate();
-    }
+    }*/
 
 }
