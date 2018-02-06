@@ -26,7 +26,7 @@
     <!-- 声明需要暴露的服务接口  在taotao_manager_interface包下写接口TestService
     实现类TestServiceImpl在taotao_manager_service包中写   ref为实现类名首字母小写testServiceImpl-->
     <dubbo:service interface="com.taotao.manager.service.TestService"
-          ref="testServiceImpl"/>
+          ref="testServiceImpl" />
     <dubbo:service interface="com.taotao.manager.service.ItemCatService"
-    ref="itemCatServiceImpl"  timeout="1000000"/>
+    ref="itemCatServiceImpl"  timeout="1000000" />
 </beans>
