@@ -32,7 +32,6 @@
             <property name="mappers" value="com.github.abel533.mapper.Mapper" />
         </plugin>
 
-
     </plugins>
 
 
