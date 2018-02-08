@@ -15,8 +15,19 @@ import java.util.List;
  * @date 2018/2/6
  */
 @Service
-public class ItemCatServiceImpl implements ItemCatService {
-    @Autowired
+
+public class ItemCatServiceImpl extends BaseServiceImpl<ItemCat> implements ItemCatService {
+    @Override
+    public List<ItemCat> queryItemCatByParentId(Long parentId) {
+        //设置查询条件
+        ItemCat itemCat = new ItemCat();
+        itemCat.setParentId(parentId);
+        //执行查询
+        List<ItemCat> itemCatsList = super.queryListByWhere(itemCat);
+
+        return  itemCatsList;
+    }
+   /*@Autowired
     private ItemCatMapper itemCatMapper;
 
     @Override
@@ -27,5 +38,5 @@ public class ItemCatServiceImpl implements ItemCatService {
         List<ItemCat> list = this.itemCatMapper.select(null);
         //this.itemCatMapper.queryItemCatByPage()
         return list;
-    }
+    }*/
 }

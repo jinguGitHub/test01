@@ -133,7 +133,7 @@
    				width:'500',
    			    height:"450",
    			    modal:true,
-   			    closed:true,
+   			    closed:true,//默认是关闭的
    			    iconCls:'icon-save',
    			    title:'选择类目',
    				//当窗口打开后执行的逻辑
@@ -148,6 +148,7 @@
    			    		method:'GET',
    			    		animate:true,
    			    		//给树上的所有节点添加点击事件
+						//如果想要
    			    		onClick : function(node){
    			    			if($(this).tree("isLeaf",node.target)){
    			    				// 填写到cid中

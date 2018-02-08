@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @version 1.0
  * @description com.taotao.manager.controller
  * @date 2018/2/6
+ *
+ * 访问路径:http://manager.taotao.com:8080/rest/page/index
  */
 @Controller
 @RequestMapping(value = "/page")
