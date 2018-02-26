@@ -82,7 +82,6 @@ public class ContentCategoryController {
             msg = "1";
             e.printStackTrace();
         }
-        //TODO
         return msg;
     }
 }
