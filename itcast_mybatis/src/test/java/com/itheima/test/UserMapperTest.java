@@ -1,3 +1,4 @@
+/*
 package com.itheima.test;
 
 import com.itheima.mybatis.mapper.UserMapper;
@@ -13,12 +14,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.io.IOException;
 import java.io.InputStream;
 
+*/
 /**
  * @author Jeff Huang
  * @version 1.0
  * @description com.itheima.test
  * @date 2018/2/4
- */
+ *//*
+
 public class UserMapperTest {
     @Autowired
     private SqlSessionFactory sqlSessionFactory;
@@ -86,3 +89,4 @@ public class UserMapperTest {
         sqlSession.close();
     }
 }
+*/

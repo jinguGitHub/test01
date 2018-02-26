@@ -1,0 +1,53 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <parent>
+        <artifactId>taotao-parent</artifactId>
+        <groupId>com.taotao</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>taotao_portal_web</artifactId>
+    <packaging>war</packaging>
+    <name>taotao_portal_web Maven Webapp</name>
+    <url>http://maven.apache.org</url>
+
+    <!--########依赖冲突问题#######-->
+    <!--1.包依赖-->
+    <dependencies>
+        <!--依赖common-->
+        <dependency>
+            <artifactId>taotao_common</artifactId>
+            <groupId>com.taotao</groupId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+
+
+        <!--2.依赖interface-->
+        <dependency>
+            <artifactId>taotao_manager_interface</artifactId>
+            <groupId>com.taotao</groupId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <finalName>taotao_portal_web</finalName>
+        <defaultGoal>install</defaultGoal>
+        <plugins>
+            <!--配置Tomcat插件-->
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <configuration>
+                    <!--http://127.0.0.1:${port}/${path}-->
+                    <port>18083</port>
+                    <path>/</path>
+                </configuration>
+            </plugin>
+        </plugins>
+
+
+    </build>
+</project>

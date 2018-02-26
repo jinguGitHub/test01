@@ -4,7 +4,10 @@
   <artifactId>taotao-parent</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <modules>
-    <module>itcast_mybatis</module>
+    <module>taotao_common</module>
+    <module>taotao_manager</module>
+    <module>taotao_manager_web</module>
+    <module>taotao_portal_web</module>
   </modules>
   <packaging>pom</packaging>
 
@@ -308,5 +311,4 @@
       </resource>
     </resources>
   </build>
-
 </project>

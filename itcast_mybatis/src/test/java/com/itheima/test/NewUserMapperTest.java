@@ -1,3 +1,4 @@
+/*
 package com.itheima.test;
 
 import com.github.abel533.entity.Example;
@@ -20,12 +21,14 @@ import java.util.Map;
 
 import static org.junit.Assert.fail;
 
+*/
 /**
  * @author Jeff Huang
  * @version 1.0
  * @description com.itheima.test
  * @date 2018/2/5
- */
+ *//*
+
 public class NewUserMapperTest {
     private NewUserMapper newUserMapper;
 
@@ -197,7 +200,9 @@ public class NewUserMapperTest {
         }
     }
 
-    /*在mapper.xml中集成分页插件功能测试*/
+    */
+/*在mapper.xml中集成分页插件功能测试*//*
+
     @Test
     public void testQueryUserByPageHelper(){
         PageHelper.startPage(1,4);
@@ -213,3 +218,4 @@ public class NewUserMapperTest {
         System.out.println(pageInfo.getTotal());
     }
 }
+*/

@@ -42,5 +42,5 @@ public class ItemCatController {
     public List<ItemCat> queryItemCatByParentId(@RequestParam(value = "id",defaultValue = "0")Long parentId){
         List<ItemCat> list = this.itemCatService.queryItemCatByParentId(parentId);
         return  list;
-    };
+    }
 }

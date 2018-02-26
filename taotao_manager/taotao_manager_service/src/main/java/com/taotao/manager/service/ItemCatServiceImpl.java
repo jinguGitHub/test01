@@ -15,7 +15,6 @@ import java.util.List;
  * @date 2018/2/6
  */
 @Service
-
 public class ItemCatServiceImpl extends BaseServiceImpl<ItemCat> implements ItemCatService {
     @Override
     public List<ItemCat> queryItemCatByParentId(Long parentId) {

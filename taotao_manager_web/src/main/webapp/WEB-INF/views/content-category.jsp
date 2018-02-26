@@ -25,9 +25,9 @@ $(function(){
 			//获取选中的节点
             $(this).tree('select',node.target);
 			//id选择器，其实就是菜单元素组件
-			//显示菜单
+			//显示菜单选择框
             $('#contentCategoryMenu').menu('show',{
-            	//设置菜单出现的位置，其实就是鼠标所在位置
+            	//设置(添加/重命名/删除)菜单选择框出现的位置，其实就是鼠标所在位置
                 left: e.pageX,
                 top: e.pageY
             });
@@ -73,7 +73,7 @@ $(function(){
 	});
 });
 
-//菜单点击事件,item就是选择的菜单项目
+//菜单点击事件,item就是选择的菜单项目   选中的项目
 function menuHandler(item){
 	//获取树
 	var tree = $("#contentCategory");
