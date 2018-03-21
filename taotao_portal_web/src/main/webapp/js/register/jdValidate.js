@@ -596,9 +596,10 @@ function checkPin(option) {
         if (nameold != pin) {
             nameold = pin;
             option.errorEle.html("<em style='color:#999'>检验中……</em>");
+            /*//发起异步请求   pin是验证的内容 1是验证的类型*/
             $.ajax({
             	url : "http://sso.taotao.com/user/check/"+escape(pin)+"/1?r=" + Math.random(),
-            	dataType : "jsonp",
+            	dataType : "jsonp",//jsonp解决的 通过浏览器来跨域名跨端口去异步请求就好存在 跨域的问题   jsonp来解决跨域名访问拿数据的问题
             	success : function(data) {
                     checkpin = data?"1":"0";
                     if (data) {

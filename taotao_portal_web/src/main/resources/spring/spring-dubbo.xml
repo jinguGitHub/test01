@@ -20,7 +20,7 @@
     <!--设置接口请求超时时间-->
     <dubbo:consumer timeout="1000000"  />
     <!--  使用zookeeper注册中心暴露服务地址 -->
-    <dubbo:registry address="zookeeper://192.168.199.112:2181" />
+    <dubbo:registry address="zookeeper://192.168.37.161:2181" />
     <!-- 使用注解方式暴露接口 -->
     <dubbo:annotation package="com.taotao.manager.controller" />
     <!-- 包扫描 -->

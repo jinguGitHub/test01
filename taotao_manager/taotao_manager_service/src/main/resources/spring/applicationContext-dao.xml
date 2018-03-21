@@ -7,8 +7,11 @@
         http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
+    <!--1. 配置 读取properties文件 所有的后缀为properties都读取 -->
+    <context:property-placeholder location="classpath:*.properties"/>
+
     <!--1. 配置 读取properties文件 jdbc.properties -->
-    <context:property-placeholder location="classpath:jdbc.properties" />
+    <!--<context:property-placeholder location="classpath:jdbc.properties" />-->
 
     <!--2. 配置数据源 -->
     <bean id="dataSource" class="com.jolbox.bonecp.BoneCPDataSource"

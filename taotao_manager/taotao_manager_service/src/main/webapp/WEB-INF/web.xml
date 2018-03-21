@@ -4,13 +4,24 @@
 <web-app>
   <display-name>taotao-manager</display-name>
 
-  <!-- 配置spring -->
+  <!--1. 配置spring             ====告诉spring我的
+      a. 创建工厂需要依赖xml文件。
+      b. 监听器里面的代码是spring早在很久以前就写好的。 它的监听器默认回到某一个位置去
+         读xml文件。  WEB-INF/applicationContext.xml
+      c. 但是spring又不想束缚程序员， 让程序员你的编码灵活性变得更高。 允许我们xml文件
+         随便命名， 放哪里都可以。 所以我们需要配置context-param 去告诉spring，配置文件
+         在哪里。
+  -->
   <context-param>
     <param-name>contextConfigLocation</param-name>
     <param-value>classpath:spring/applicationContext-*.xml</param-value>
   </context-param>
 
-  <!-- 配置spring的监听器 -->
+  <!-- 2. 配置spring的监听器
+    a. 监听器实现了ServletContextListener， 能够感知到项目的发布，抓住这个契机。
+    b. 感知到这个契机是为了创建工厂，因为创建工厂比较耗时。 而且这个监听器里面也写好了
+       创建工厂的代码。
+  -->
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>

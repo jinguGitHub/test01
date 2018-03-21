@@ -5,6 +5,7 @@
 <web-app>
   <display-name>taotao-manager-web</display-name>
 
+
   <!-- 解决POST乱码问题 -->
   <filter>
     <filter-name>encoding</filter-name>
@@ -16,6 +17,27 @@
   </filter>
   <filter-mapping>
     <filter-name>encoding</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  <!--2. 解决PUT和DELETE请求时无法提交表单数据-->
+  <filter>
+    <filter-name>HttpMethodFilter</filter-name>
+    <filter-class>org.springframework.web.filter.HttpPutFormContentFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>HttpMethodFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  <!--3. 将POST请求转化为DELETE或者是PUT
+  要用_method指定真正的请求参数 -->
+  <filter>
+    <filter-name>HiddenHttpMethodFilter</filter-name>
+    <filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>HiddenHttpMethodFilter</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
 
@@ -39,5 +61,9 @@
      -->
     <url-pattern>/rest/*</url-pattern>
   </servlet-mapping>
+  <!--配置默认访问的页面:这里配置跳转到后台管理系统的PageController页面-->
+  <welcome-file-list>
+    <welcome-file>rest/page/index</welcome-file>
+  </welcome-file-list>
 
 </web-app>

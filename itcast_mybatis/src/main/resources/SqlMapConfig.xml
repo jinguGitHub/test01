@@ -3,20 +3,24 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-    <!-- 引入外部资源配置文件 -->
+    <!--扫描加载 *.properties文件-->
+    <!-- 1.引入外部资源配置文件 -->
     <properties resource="jdbc.properties" />
 
     <settings>
-        <!-- 开启驼峰自动映射 -->
+        <!--2. 开启驼峰自动映射 (mybatis中关于驼峰写法映射的设置,如果数据库用下划线的写法，比如
+        数据库有个USER_NAME字段，那么与它对应的属性就应该是userName) -->
         <setting name="mapUnderscoreToCamelCase" value="true" />
     </settings>
 
+    <!--3.别名配置-->
     <typeAliases>
         <package name="com.itheima.mybatis.pojo" />
     </typeAliases>
 
+    <!--4. 插件配置-->
     <plugins>
-        <!-- com.github.pagehelper为PageHelper类所在包名，分页插件应该配置在通用Mapper上 -->
+        <!-- 4.1 com.github.pagehelper为PageHelper类所在包名，分页插件应该配置在通用Mapper上 -->
         <plugin interceptor="com.github.pagehelper.PageHelper">
             <property name="dialect" value="mysql" />
             <!-- 该参数默认为false -->
@@ -24,7 +28,7 @@
             <property name="rowBoundsWithCount" value="true" />
         </plugin>
 
-        <!-- 使用通用Mapper -->
+        <!-- 4.2 使用通用Mapper -->
         <plugin interceptor="com.github.abel533.mapperhelper.MapperInterceptor">
             <!--主键自增回写方法,默认值MYSQL,详细说明请看文档 -->
             <property name="IDENTITY" value="MYSQL" />
@@ -35,7 +39,7 @@
     </plugins>
 
 
-    <!-- 配置环境，制定数据库连接信息 -->
+    <!-- 5.配置环境，制定数据库连接信息 -->
     <environments default="development">
         <environment id="development">
             <transactionManager type="JDBC" />
@@ -48,6 +52,8 @@
         </environment>
 
     </environments>
+
+    <!--6.配置mybatis映射文件XXXmpper.xml信息-->
     <mappers>
         <package name="com.itheima.mybatis.mapper" />
     </mappers>

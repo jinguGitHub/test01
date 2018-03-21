@@ -14,40 +14,43 @@
     <!--########依赖冲突问题#######-->
     <!--1.包依赖-->
     <dependencies>
-        <!--依赖common-->
+        <!--1.1 依赖common-->
         <dependency>
             <artifactId>taotao_common</artifactId>
             <groupId>com.taotao</groupId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
 
-
-
-        <!--2.依赖interface-->
+        <!--1.2 依赖interface-->
         <dependency>
             <artifactId>taotao_manager_interface</artifactId>
             <groupId>com.taotao</groupId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
-
+        <!--1.3添加单点登录接口依赖 因为需要调用单点登录的接口的服务来实现用户注册 所以需要
+               加入单点登录的接口依赖，和声明服务调用-->
+        <dependency>
+            <groupId>com.taotao</groupId>
+            <artifactId>taotao_sso_interface</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
+    <!--2. 插件配置-->
     <build>
         <finalName>taotao_portal_web</finalName>
         <defaultGoal>install</defaultGoal>
         <plugins>
-            <!--配置Tomcat插件-->
+            <!-- 配置Tomcat插件-->
             <plugin>
                 <groupId>org.apache.tomcat.maven</groupId>
                 <artifactId>tomcat7-maven-plugin</artifactId>
                 <configuration>
                     <!--http://127.0.0.1:${port}/${path}-->
-                    <port>18083</port>
+                    <port>8081</port>
                     <path>/</path>
                 </configuration>
             </plugin>
         </plugins>
-
-
     </build>
 </project>

@@ -2,6 +2,7 @@
 <div class="easyui-panel" title="Nested Panel" data-options="width:'100%',minHeight:500,noheader:true,border:false" style="padding:10px;">
     <div class="easyui-layout" data-options="fit:true">
         <div data-options="region:'west',split:false" style="width:250px;padding:5px">
+			<%--##contentCategoryTree是树组件的id  dataoptions自动加载前面完成的/rest/content/category下的controller的数据--%>
             <ul id="contentCategoryTree" class="easyui-tree" data-options="url:'/rest/content/category',animate: true,method : 'GET'">
             </ul>
         </div>
@@ -51,7 +52,7 @@ var contentListToolbar = [{
     handler:function(){
     	//获取树的选中节点
     	var node = $("#contentCategoryTree").tree("getSelected");
-    	//判断有没有选中节点，或者选中的节点不是叶子节点
+    	//判断 有没有选中节点，或者选中的节点不是叶子节点
     	if(!node || !$("#contentCategoryTree").tree("isLeaf",node.target)){
     		$.messager.alert('提示','新增内容必须选择一个内容分类!');
     		//结束操作

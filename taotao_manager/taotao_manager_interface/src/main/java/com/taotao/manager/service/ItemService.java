@@ -2,6 +2,7 @@ package com.taotao.manager.service;
 
 import com.taotao.manager.pojo.Item;
 import com.taotao.manager.pojo.ItemDesc;
+import com.taotao.manager.utils.TaoResult;
 
 /**
  * @author Jeff Huang
@@ -15,4 +16,13 @@ public interface ItemService extends BaseService<Item> {
      * @param item
      */
     public void saveItem(Item item,String desc);
+
+    /**
+     * 查询商品列表
+     * @param page
+     * @param rows
+     * @return
+     */
+    TaoResult<Item> queryItemList(Integer page, Integer rows);
+
 }

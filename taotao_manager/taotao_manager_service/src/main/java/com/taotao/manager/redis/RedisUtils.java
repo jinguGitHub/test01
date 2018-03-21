@@ -1,0 +1,58 @@
+package com.taotao.manager.redis;
+
+/**
+ * @author Jeff Huang
+ * @version 1.0
+ * @description com.taotao.manager.redis
+ * @date 2018/3/1
+ */
+public interface RedisUtils {
+    /**
+     * 保存
+     *
+     * @param key
+     * @param value
+     */
+    public void set(String key, String value);
+
+    /**
+     * 根据key查询
+     *
+     * @param key
+     * @return
+     */
+    public String get(String key);
+
+    /**
+     * 删除
+     *
+     * @param key
+     */
+    public void del(String key);
+
+    /**
+     * 根据key设置生存时间
+     *
+     * @param TAOTAO_PORTAL_AD_ID
+     * @param key
+     * @param seconds
+     */
+    public void expire(String TAOTAO_PORTAL_AD_ID, String key, Integer seconds);
+
+    /**
+     * 保存并设置生存时间
+     *
+     * @param key
+     * @param value
+     * @param seconds
+     */
+    public void set(String key, String value, Integer seconds);
+
+    /**
+     * value加一
+     *
+     * @param key
+     * @return
+     */
+    public Long incr(String key);
+}
