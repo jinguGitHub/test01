@@ -64,7 +64,7 @@ public class UserServiceImpl implements UserService {
         //如果为空则用户 没有登录
         if (StringUtils.isNotBlank(jsonStr)){
             //如果用户要验证登录,说明用户是活动状态,需要重新设置用户登录有效时间
-            redisUtils.expire(TAOTAO_SSO_USER_SESSION_KEY + ticket, 60 * 60);
+            redisUtils.expire(TAOTAO_SSO_USER_SESSION_KEY + ticket, 30 * 60);
         }
         try {
             //把json串转换成用户对象
@@ -85,4 +85,51 @@ public class UserServiceImpl implements UserService {
         //保存用户
         userMapper.insertSelective(user);
     }
+
+   /* @Override
+    public String doLogin(User user) {
+        String ticket = null;
+        //根据用户名和密码查询用户
+        //设置密码加密,因为注册的时候是用MD5加密的 所以这里也要有MD5加密
+        user.setUsername(user.getUsername());
+        user.setPassword(DigestUtils.md5Hex(user.getPassword()));
+
+        try {
+            User result = userMapper.selectOne(user);
+            //判断用户result是否为空,如果result不为空,则表示用户登录成功
+            if (result != null) {
+                //不为空,表示登录成功,需要生成唯一的ticket 并且保持到redis中
+                String ticket = ""+redisUtils.incr(TAOTAO_SSO_USER_SESSION_KEY + result.getId());
+                //把ticket和用户数据放到redis中,模拟session,原来的session有效时间是半个小时
+                redisUtils.set(TAOTAO_SSO_USER_SESSION_KEY+ticket, objectMapper.writeValueAsString(result),30*60);
+
+                //返回ticket
+                return ticket;
+            }
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        //如果查询的用户为空,则返回空
+        return null;
+    }*/
+   @Override
+   public String doLogin(User user) {
+       String ticket = null;
+       //获取用户登录信息
+       //加密密码
+       user.setPassword(DigestUtils.md5Hex(user.getPassword()));
+       User login = userMapper.selectOne(user);
+       //如果用户信息正确，设置登录信息
+       if (login != null) {
+           ticket = login.getId().toString();
+           try {
+               String json = objectMapper.writeValueAsString(login);
+               //模拟session 30分钟有效
+               redisUtils.set(TAOTAO_SSO_USER_SESSION_KEY + ticket,json,30 * 60);
+           } catch (Exception e) {
+               e.printStackTrace();
+           }
+       }
+       return ticket;
+   }
 }

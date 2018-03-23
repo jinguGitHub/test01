@@ -1,8 +1,7 @@
 package com.taotao.sso.jedis;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import redis.clients.jedis.Jedis;
-import redis.clients.jedis.JedisPool;
+import redis.clients.jedis.JedisCluster;
 
 /**
  * @author Jeff Huang
@@ -13,51 +12,39 @@ import redis.clients.jedis.JedisPool;
 public class RedisClusterImpl implements RedisUtils {
 
     @Autowired
-    private JedisPool jedisPool;
+    private JedisCluster jedisCluster;
 
     @Override
     public void set(String key, String value) {
-        Jedis jedis = jedisPool.getResource();
-        jedis.set(key, value);
-        //把连接还给连接池
-        jedis.close();
+        //这里不能关闭jedisCluster
+        jedisCluster.set(key, value);
     }
 
     @Override
     public String get(String key) {
-        Jedis jedis = jedisPool.getResource();
-        String json = jedis.get(key);
-        jedis.close();
+        String json = jedisCluster.get(key);
         return json;
     }
 
     @Override
     public void del(String key) {
-        Jedis jedis = jedisPool.getResource();
-        jedis.del(key);
-        jedis.close();
+        jedisCluster.del(key);
     }
 
     @Override
     public void expire(String key, Integer seconds) {
-        Jedis jedis = jedisPool.getResource();
-        jedis.expire(key, seconds);
-        jedis.close();
+        jedisCluster.expire(key, seconds);
     }
 
     @Override
     public void set(String key, String value, Integer seconds) {
-        Jedis jedis = jedisPool.getResource();
-        jedis.set(key, value);
-        jedis.expire(key, seconds);
-        jedis.close();
+        jedisCluster.set(key, value);
+        jedisCluster.expire(key, seconds);
     }
 
     @Override
     public Long incr(String key) {
-        Jedis jedis = jedisPool.getResource();
-        Long incr = jedis.incr(key);
-        jedis.close();
+        Long incr = jedisCluster.incr(key);
         return incr;
     }
 }

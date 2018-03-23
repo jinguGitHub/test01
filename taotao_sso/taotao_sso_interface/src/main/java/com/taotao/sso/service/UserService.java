@@ -29,4 +29,13 @@ public interface UserService {
      * @param user
      */
     void doRegister(User user);
+
+    /**
+     * 实现用户登录
+     * @param user
+     * @return
+     */
+    String doLogin(User user);
+
+
 }
